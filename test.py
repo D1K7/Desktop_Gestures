@@ -6,7 +6,7 @@ from mediapipe.tasks.python import vision
 import tensorflow as tf
 
 # 1. Load your trained model and labels
-model = tf.keras.models.load_model('gesture_recognizer.keras')
+model = tf.keras.models.load_model('gesture_recognizer1.keras')
 class_names = np.load('classes.npy', allow_pickle=True)
 
 # 2. Setup MediaPipe Tasks
@@ -62,10 +62,19 @@ while cap.isOpened():
         if confidence > 0.8:
             cv2.putText(frame, f"{gesture_name} ({int(confidence*100)}%)", 
                         (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        
+    while cv2.waitKey(1) & 0xFF == ord('e'):
+        cv2.putText(frame, "Hello", 
+                        (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
     cv2.imshow('Gesture Recognition', frame)
+
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+    
+
 
 cap.release()
 cv2.destroyAllWindows()

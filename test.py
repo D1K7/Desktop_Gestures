@@ -5,7 +5,7 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import tensorflow as tf
 
-model = tf.keras.models.load_model('gesture_recognizer1.keras')
+model = tf.keras.models.load_model('gesture_recognizer.keras')
 class_names = np.load('classes.npy', allow_pickle=True)
 
 model_path = 'hand_landmarker.task'
@@ -19,7 +19,7 @@ options = vision.HandLandmarkerOptions(
 detector = vision.HandLandmarker.create_from_options(options)
 
 def normalize_live_landmarks(landmarks):
-    """Same normalization logic used during training"""
+    
     coords = np.array([[lm.x, lm.y] for lm in landmarks])
     
     coords = coords - coords[0]

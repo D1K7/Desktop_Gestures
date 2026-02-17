@@ -5,8 +5,8 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import tensorflow as tf
 
-model = tf.keras.models.load_model('gesture_recognizer1.keras')
-class_names = np.load('classes.npy', allow_pickle=True)
+model = tf.keras.models.load_model('gesture_recognizer_temp.keras')
+class_names = np.load('classes_temp.npy', allow_pickle=True)
 
 model_path = 'hand_landmarker.task'
 base_options = python.BaseOptions(model_asset_path=model_path)
